@@ -1,7 +1,8 @@
-﻿;(function($, window, document, undefined){
+;(function($, window, document, undefined){
     var pluginName = 'circleMenu',
         defaults = {
             depth: 0,
+            display_using_table: false,
             item_diameter: 30,
             circle_radius: 80,
             angle:{
@@ -227,7 +228,7 @@
         }
     };
     CircleMenu.prototype.initCss = function(){
-        var self = this, 
+        var self = this,
             $items;
 
         self._state = 'closed';
@@ -240,8 +241,11 @@
         });
         $items = self.element.children('li');
         $items.attr('style','');
+
+        var display_using_table = self.options.display_using_table ? 'table' : 'block';
+
         $items.css({
-            'display': 'block',
+            'display': display_using_table,
             'width': self.options.item_diameter+'px',
             'height': self.options.item_diameter+'px',
             'text-align': 'center',
